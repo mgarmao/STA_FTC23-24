@@ -92,11 +92,11 @@ public class Mecanum extends OpMode {
 
         //Rotator - motor
         if(gamepad1.dpad_up){
-            rotatorL.setPower(0.4);
-            rotatorR.setPower(0.4);
+            rotatorL.setPower(0.2);
+            rotatorR.setPower(0.2);
         } else if (gamepad1.dpad_down) {
-            rotatorL.setPower(-0.4);
-            rotatorR.setPower(-0.4);
+            rotatorL.setPower(-0.2);
+            rotatorR.setPower(-0.2);
         } else{
             rotatorL.setPower(0);
             rotatorR.setPower(0);
@@ -116,8 +116,8 @@ public class Mecanum extends OpMode {
         double[] speeds = {
                 (drive + strafe + twist),
                 (drive - strafe - twist),
-                (drive - strafe +twist),
-                (drive + strafe - twist)
+                (drive + strafe +twist),
+                (drive - strafe - twist)
         };
 
         double max = Math.abs(speeds[0]);
@@ -136,7 +136,7 @@ public class Mecanum extends OpMode {
         back_left.setPower(speeds[2]);
         back_right.setPower(speeds[3]);
 
-        telemetry.addData("strafe",strafe);
+        telemetry.addData("Rotator L Pos",rotatorL.getCurrentPosition());
         telemetry.update();
     }
 }
