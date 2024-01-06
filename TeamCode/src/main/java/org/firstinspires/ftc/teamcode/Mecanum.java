@@ -42,7 +42,7 @@ public class Mecanum extends OpMode {
         rotatorL = hardwareMap.get(DcMotor.class,"motor2");
         rotatorR = hardwareMap.get(DcMotor.class,"motor3");
 
-        grabber = hardwareMap.get(Servo.class, "Servo0");
+        wrist = hardwareMap.get(Servo.class, "Servo0");
         servo1 = hardwareMap.get(Servo.class, "Servo1");
 
         front_left.setDirection(DcMotor.Direction.FORWARD);
@@ -109,6 +109,13 @@ public class Mecanum extends OpMode {
 
         if(gamepad1.b){
             grabber.setPosition(0);
+        }
+
+        if(gamepad1.right_trigger>0.01){
+            wrist.setPosition(gamepad1.right_trigger);
+        }
+        else{
+            wrist.setPosition(0);
         }
 
         // You may need to multiply some of these by -1 to invert direction of
