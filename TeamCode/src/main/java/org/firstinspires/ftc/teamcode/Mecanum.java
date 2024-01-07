@@ -25,7 +25,7 @@ public class Mecanum extends OpMode {
     Servo wrist;
     Servo grabber;
 
-    int ServoPosition = 1;
+    double wristPosition = 0;
     int elevatorZero=0;
     @Override
     public void init() {
@@ -112,10 +112,15 @@ public class Mecanum extends OpMode {
         }
 
         if(gamepad1.right_trigger>0.01){
-            wrist.setPosition(gamepad1.right_trigger);
+            wristPosition= wristPosition+0.01;
+            wrist.setPosition(wristPosition);
+        }
+        else if(gamepad1.left_trigger>0.01){
+            wristPosition= wristPosition-0.01;
+            wrist.setPosition(wristPosition);
         }
         else{
-            wrist.setPosition(0);
+            wrist.setPosition(wristPosition);
         }
 
         // You may need to multiply some of these by -1 to invert direction of
