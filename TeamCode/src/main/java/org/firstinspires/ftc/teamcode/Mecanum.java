@@ -113,10 +113,16 @@ public class Mecanum extends OpMode {
 
         if(gamepad1.right_trigger>0.01){
             wristPosition= wristPosition+0.01;
+            if(wristPosition>=1){
+                wristPosition = 1;
+            }
             wrist.setPosition(wristPosition);
         }
         else if(gamepad1.left_trigger>0.01){
             wristPosition= wristPosition-0.01;
+            if(wristPosition<=0){
+                wristPosition = 0;
+            }
             wrist.setPosition(wristPosition);
         }
         else{
